@@ -2,10 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[SelectionBase]
 public class ModuleHandler : LogicalElement
 {
-    public Module module;
+    public Module _module;
+    public Module module
+    {
+        set
+        {
+            if (_module != value)
+            {
+                _module = value;
+                ModuleChanged(value);
+                moduleValueChanged?.Invoke(value);
+            }
+        }
+        get
+        {
+            return _module;
+        }
+    }
+    public delegate void ModuleHandlerEvent(Module m);
+    public ModuleHandlerEvent moduleValueChanged;
     public Transform place;
+    public ParticleSystem flare;
 
     // Update is called once per frame
     void Update()
@@ -21,6 +41,19 @@ public class ModuleHandler : LogicalElement
         else
         {
             logicalOutput.value = false;
+            
+        }
+    }
+
+    public void ModuleChanged(Module m)
+    {
+        if (m)
+        {
+            flare.Stop();
+        }
+        else if (logicalInput && logicalInput.value)
+        {
+            flare.Play();
         }
     }
 
