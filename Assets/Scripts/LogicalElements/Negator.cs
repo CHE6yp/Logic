@@ -8,6 +8,8 @@ public class Negator : LogicalElement
     {
         base.Awake();
         logicalInput.valueChanged += Switch;
+        Switch(logicalInput.value);
+
     }
 
     void Switch(bool v)

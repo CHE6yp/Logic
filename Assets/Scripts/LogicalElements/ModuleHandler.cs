@@ -25,9 +25,22 @@ public class ModuleHandler : LogicalElement
     public delegate void ModuleHandlerEvent(Module m);
     public ModuleHandlerEvent moduleValueChanged;
     public Transform place;
+    public bool detachable = false;
+    public GameObject straps;
     public ParticleSystem flare;
 
-    // Update is called once per frame
+    protected override void Awake()
+    {
+        base.Awake();
+        straps.SetActive(!detachable);
+        
+    }
+
+    private void Start()
+    {
+        FlareToggle();
+    }
+
     void Update()
     {
         if (Attached())
@@ -47,7 +60,12 @@ public class ModuleHandler : LogicalElement
 
     public void ModuleChanged(Module m)
     {
-        if (m)
+        FlareToggle();
+    }
+
+    void FlareToggle()
+    {
+        if (module)
         {
             flare.Stop();
         }

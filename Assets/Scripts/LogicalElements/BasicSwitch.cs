@@ -14,21 +14,29 @@ public class BasicSwitch : LogicalElement
     {
         base.Awake();
         logicalInput.valueChanged += Switch;
+
+        UpdateOutput();
+        UpdateLook();
     }
 
     void Switch(bool v)
     {
         UpdateOutput();
+        UpdateLook();
     }
 
     public void Toggle()
     {
         value = !value;
         UpdateOutput();
-
-        GetComponent<MeshRenderer>().material.color = (value) ? Color.green : Color.red;
+        UpdateLook();
         AudioClip clip = (value) ? audioClips[0] : audioClips[1];
         audioSource.PlayOneShot(clip);
+    }
+
+    void UpdateLook()
+    {
+        GetComponent<MeshRenderer>().material.color = (value) ? Color.green : Color.red;
     }
 
     void UpdateOutput()

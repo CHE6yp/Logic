@@ -10,6 +10,11 @@ public class Module : MonoBehaviour
     public ModuleHandler handler;
     public bool attached = false;
 
+    private void Awake()
+    {
+        if (handler) attached = true;
+    }
+
     public void PickUp(Transform player)
     {
         attached = false;
@@ -36,5 +41,14 @@ public class Module : MonoBehaviour
         transform.localRotation = Quaternion.identity;
     }
 
-    
+    public void Throw()
+    {
+        transform.SetParent(null);
+        GetComponent<Rigidbody>().useGravity = true;
+        GetComponent<Rigidbody>().isKinematic = false;
+        GetComponent<Rigidbody>().AddForce(transform.forward*300);
+        
+    }
+
+
 }

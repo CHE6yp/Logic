@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerInteraction : MonoBehaviour
 {
     public Text text;
+    public Text text2;
     public Module module;
 
     // Start is called before the first frame update
@@ -20,40 +21,57 @@ public class PlayerInteraction : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        Debug.DrawLine(ray.origin, ray.direction*100);
 
         text.text = "";
-        if (Physics.Raycast(ray, out hit, 100))
+        text2.text = "";
+        if (Physics.Raycast(ray, out hit, 10))
         {
-            Debug.Log(hit.collider.gameObject);
+
+            Debug.DrawLine(ray.origin, hit.point);
             if (hit.collider.gameObject.tag == "Switch")
             {
-                text.text = "E";
+                text2.text = "E - нажать";
                 if (Input.GetKeyUp(KeyCode.E))
                 {
                     hit.collider.GetComponent<BasicSwitch>().Toggle();
                 }
             }
 
-            if (hit.collider.gameObject.GetComponent<Module>())
+            if (module)
             {
-                //text.text = "E";
+                text.text = "Q - положить";
+
                 if (Input.GetKeyUp(KeyCode.Q))
                 {
-                    module = hit.collider.GetComponent<Module>();
-                    module.PickUp(transform);
+                    if (hit.collider.gameObject.GetComponent<ModuleHandler>())
+                    {
+                        module.Place(hit.collider.GetComponent<ModuleHandler>());
+                        module = null;
+                    }
+                    else
+                    {
+                        module.Throw();
+                        module = null;
+                    }
                 }
             }
 
-            if (hit.collider.gameObject.GetComponent<ModuleHandler>() && module)
+
+            if (hit.collider.gameObject.GetComponent<Module>())
             {
-                //text.text = "E";
-                if (Input.GetKeyUp(KeyCode.Q))
+                if (!hit.collider.GetComponent<Module>().attached || hit.collider.GetComponent<Module>().handler.detachable)
                 {
-                    module.Place(hit.collider.GetComponent<ModuleHandler>());
-                    module = null;
+                    text.text = "Q - взять";
+                    if (Input.GetKeyUp(KeyCode.Q) && !module)
+                    {
+                        module = hit.collider.GetComponent<Module>();
+                        module.PickUp(transform);
+                    }
                 }
             }
+
+            
+            
         }
     }
 }
