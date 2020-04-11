@@ -24,13 +24,14 @@ public class ModuleHandler : LogicalElement
         return module != null;
     }
 
-    public void Attach()
+    public void Attach(Module m)
     {
-
+        module = m;
+        module.Place(transform);
     }
 
-    public void Detach()
+    public Module Detach()
     {
-
+        return module;
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerInteraction : MonoBehaviour
 {
     public Text text;
+    public Module module;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,26 @@ public class PlayerInteraction : MonoBehaviour
                 if (Input.GetKeyUp(KeyCode.E))
                 {
                     hit.collider.GetComponent<BasicSwitch>().Toggle();
+                }
+            }
+
+            if (hit.collider.gameObject.GetComponent<Module>())
+            {
+                //text.text = "E";
+                if (Input.GetKeyUp(KeyCode.Q))
+                {
+                    module = hit.collider.GetComponent<Module>();
+                    module.PickUp(transform);
+                }
+            }
+
+            if (hit.collider.gameObject.GetComponent<ModuleHandler>() && module)
+            {
+                //text.text = "E";
+                if (Input.GetKeyUp(KeyCode.Q))
+                {
+                    hit.collider.GetComponent<ModuleHandler>().Attach(module);
+                    module = null;
                 }
             }
         }
