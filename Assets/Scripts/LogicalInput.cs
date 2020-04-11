@@ -23,9 +23,9 @@ public class LogicalInput : MonoBehaviour
     }
     public delegate void LogicalEvent(bool v);
     public event LogicalEvent valueChanged;
+    public bool OR = false;
 
-
-    public List<LogicalOutput> sources;
+    public LogicalOutput source;
 
     // Start is called before the first frame update
     void Awake()
@@ -35,13 +35,26 @@ public class LogicalInput : MonoBehaviour
     
     void Update()
     {
-        if (sources.Any(a => a.value))
-        {
-            Value = true;
-        }
+        value = source.value;
+        /*
+        if (OR)
+            if (sources.Any(a => a.value))
+            {
+                Value = true;
+            }
+            else
+            {
+                Value = false;
+            }
         else
-        {
-            Value = false;
-        }
+            if (!sources.Any(a => !a.value))
+            {
+                Value = true;
+            }
+            else
+            {
+                Value = false;
+            }
+            */
     }
 }
