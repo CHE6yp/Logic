@@ -3,17 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [SelectionBase]
-[RequireComponent(typeof(LogicalInput))]
-public class Door : MonoBehaviour
+public class Door : LogicalElement
 {
-    public LogicalInput logicalInput;
     public Animator animator;
     public AudioSource audioSource;
 
     // Start is called before the first frame update
-    void Awake()
+    protected override void Awake()
     {
-        logicalInput = GetComponent<LogicalInput>();
+        base.Awake();
         logicalInput.valueChanged += Switch;
     }
 

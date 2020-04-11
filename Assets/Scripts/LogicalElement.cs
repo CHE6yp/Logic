@@ -4,14 +4,15 @@ using UnityEngine;
 
 [RequireComponent(typeof(LogicalInput))]
 [RequireComponent(typeof(LogicalOutput))]
-public class Negator : MonoBehaviour
+public class LogicalElement : MonoBehaviour
 {
     public LogicalInput logicalInput;
     public LogicalOutput logicalOutput;
 
-    // Update is called once per frame
-    void Update()
+    protected virtual void Awake()
     {
-        logicalOutput.value = !logicalInput.value;
+        logicalInput = GetComponent<LogicalInput>();
+        logicalOutput = GetComponent<LogicalOutput>();
     }
+
 }

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LogicalOutput : MonoBehaviour
+public class LogicalOutput : LogicalIO
 {
-    public bool value = false;
 }
