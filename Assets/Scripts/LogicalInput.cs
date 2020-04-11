@@ -5,33 +5,25 @@ using UnityEngine;
 
 public class LogicalInput : MonoBehaviour
 {
-    public bool value = false;
-    public bool Value {
+    public bool _value = false;
+    public bool value {
         set
         {
-            if (this.value != value)
+            if (_value != value)
             {
-                this.value = value;
-                Debug.Log("Changin!");
+                _value = value;
                 valueChanged?.Invoke(value);
             }
         }
         get
         {
-            return value;
+            return _value;
         }
     }
     public delegate void LogicalEvent(bool v);
     public event LogicalEvent valueChanged;
-    public bool OR = false;
 
     public LogicalOutput source;
-
-    // Start is called before the first frame update
-    void Awake()
-    {
-        //sources = new List<LogicalOutput>();
-    }
     
     void Update()
     {
