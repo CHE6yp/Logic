@@ -25,6 +25,7 @@ public class PlayerInteraction : MonoBehaviour
         text.text = "";
         if (Physics.Raycast(ray, out hit, 100))
         {
+            Debug.Log(hit.collider.gameObject);
             if (hit.collider.gameObject.tag == "Switch")
             {
                 text.text = "E";
@@ -49,7 +50,7 @@ public class PlayerInteraction : MonoBehaviour
                 //text.text = "E";
                 if (Input.GetKeyUp(KeyCode.Q))
                 {
-                    hit.collider.GetComponent<ModuleHandler>().Attach(module);
+                    module.Place(hit.collider.GetComponent<ModuleHandler>());
                     module = null;
                 }
             }

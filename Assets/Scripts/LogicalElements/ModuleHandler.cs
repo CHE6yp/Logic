@@ -5,33 +5,27 @@ using UnityEngine;
 public class ModuleHandler : LogicalElement
 {
     public Module module;
+    public Transform place;
 
     // Update is called once per frame
     void Update()
     {
         if (Attached())
         {
-            if (logicalInput != null)
+            if (logicalInput && module.element.logicalInput)
                 module.element.logicalInput.value = logicalInput.value;
 
-            if (logicalOutput != null)
+            if (logicalOutput && module.element.logicalOutput)
                 logicalOutput.value = module.element.logicalOutput.value;
+        }
+        else
+        {
+            logicalOutput.value = false;
         }
     }
 
     public bool Attached()
     {
         return module != null;
-    }
-
-    public void Attach(Module m)
-    {
-        module = m;
-        module.Place(transform);
-    }
-
-    public Module Detach()
-    {
-        return module;
     }
 }

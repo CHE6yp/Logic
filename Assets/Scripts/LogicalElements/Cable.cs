@@ -13,6 +13,7 @@ public class Cable : LogicalElement
         base.Awake();
         meshRenderer = GetComponent<MeshRenderer>();
         logicalInput.valueChanged += Switch;
+        Switch(logicalInput.value);
     }
 
     void Switch(bool v)

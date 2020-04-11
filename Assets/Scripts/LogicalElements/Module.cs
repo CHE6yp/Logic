@@ -7,11 +7,15 @@ using UnityEngine;
 public class Module : MonoBehaviour
 {
     public LogicalElement element;
+    public ModuleHandler handler;
     public bool attached = false;
 
     public void PickUp(Transform player)
     {
         attached = false;
+        if (handler)
+            handler.module = null;
+        handler = null;
         GetComponent<Rigidbody>().useGravity = false;
         GetComponent<Rigidbody>().isKinematic= true;
         transform.SetParent(player);
@@ -19,11 +23,18 @@ public class Module : MonoBehaviour
         transform.localRotation= Quaternion.identity;
     }
 
-    public void Place(Transform moduleHandler)
+    public void Place(ModuleHandler moduleHandler)
     {
-        if (moduleHandler != null) attached = true;
-        transform.SetParent(moduleHandler);
+        if (moduleHandler != null)
+        {
+            attached = true;
+            handler = moduleHandler;
+            handler.module = this;
+        }
+        transform.SetParent(moduleHandler.place);
         transform.localPosition = new Vector3(0, 0, 0);
         transform.localRotation = Quaternion.identity;
     }
+
+    
 }
