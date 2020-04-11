@@ -394,7 +394,7 @@ MonoBehaviour:
   logicalOutput: {fileID: 0}
   _module: {fileID: 0}
   place: {fileID: 2343543139135253837}
-  detachable: 0
+  detachable: 1
   straps: {fileID: 6014228768472860621}
   flare: {fileID: 3642855945085931274}
 --- !u!1 &6014228768472860621
