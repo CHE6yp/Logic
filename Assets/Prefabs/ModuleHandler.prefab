@@ -565,7 +565,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5981610845749517681}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.478, y: 1.307, z: 7.470001}
+  m_LocalPosition: {x: -3, y: 1.5, z: 7.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 435041862721409809}
@@ -598,6 +598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 768813d89d3baf64786854243cff680b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputElement: {fileID: 0}
   logicalInput:
     _value: 0
     source:
@@ -605,10 +606,8 @@ MonoBehaviour:
   logicalOutput:
     _value: 0
   _module: {fileID: 0}
-  place: {fileID: 2343543139135253837}
   detachable: 1
-  straps: {fileID: 6014228768472860621}
-  flare: {fileID: 3642855945085931274}
+  place: {fileID: 2343543139135253837}
 --- !u!1 &6014228768472860621
 GameObject:
   m_ObjectHideFlags: 0
@@ -1122,12 +1121,6 @@ PrefabInstance:
 --- !u!4 &3642855945105328712 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400006, guid: 0438351a6e6422d43a09930e9be00ee9,
-    type: 3}
-  m_PrefabInstance: {fileID: 3642855945105199310}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &3642855945085931274 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 19800004, guid: 0438351a6e6422d43a09930e9be00ee9,
     type: 3}
   m_PrefabInstance: {fileID: 3642855945105199310}
   m_PrefabAsset: {fileID: 0}
