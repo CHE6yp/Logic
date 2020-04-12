@@ -12,9 +12,7 @@ public class ModuleHandler : LogicalElement
         {
             if (_module != value)
             {
-                _module = value;
-                ModuleChanged(value);
-                moduleValueChanged?.Invoke(value);
+                ChangeModule(value);
             }
         }
         get
@@ -38,53 +36,73 @@ public class ModuleHandler : LogicalElement
         straps = transform.Find("Visual").Find("Straps").gameObject;
         flare = transform.Find("Visual").Find("Flare").GetComponent<ParticleSystem>();
         straps.SetActive(!detachable);
-        
+
+        ChangeModule(module);
+        logicalInput.valueChanged += FlareToggle;
+
     }
 
     private void Start()
     {
-        FlareToggle();
+        FlareToggle(logicalInput.value);
     }
 
-    //TODO избавиться от апдейта
-    protected override void Update()
-    {
-        
-        if (Attached())
-        {
-            if (logicalInput!=null && module.element.logicalInput != null)
-                module.element.logicalInput.value = logicalInput.value;
 
-            if (logicalOutput != null && module.element.logicalOutput != null)
-                logicalOutput.value = module.element.logicalOutput.value;
+    public void ChangeModule(Module newModule)
+    {
+        if (_module != null)
+        {
+            logicalInput.valueChanged -= UpdateInput;
+            _module.element.logicalOutput.valueChanged -= UpdateOutput;
+            _module.element.logicalInput.value = false;//В отсоединеный модуль не идет ток, потому всегда фолс
+        }
+        _module = newModule;
+        if (_module != null)
+        {
+            logicalInput.valueChanged += UpdateInput;
+            _module.element.logicalOutput.valueChanged += UpdateOutput;
+        }
+        UpdateInput();
+        UpdateOutput();
+        FlareToggle(logicalInput.value);
+    }
+
+    void FlareToggle(bool v)
+    {
+        if (v && module==null)
+        {
+            flare.Play();
         }
         else
         {
-            logicalOutput.value = false;
-            
-        }
-        base.Update();
-    }
-
-    public void ModuleChanged(Module m)
-    {
-        FlareToggle();
-    }
-
-    void FlareToggle()
-    {
-        if (module)
-        {
             flare.Stop();
-        }
-        else if (logicalInput != null && logicalInput.value != null)
-        {
-            flare.Play();
         }
     }
 
     public bool Attached()
     {
         return module != null;
+    }
+
+
+    void UpdateInput()
+    {
+        if (Attached())
+            module.element.logicalInput.value = logicalInput.value;
+    }
+
+    void UpdateOutput()
+    {
+        logicalOutput.value = (Attached())? module.element.logicalOutput.value : false;
+    }
+
+    void UpdateInput(bool v)
+    {
+        module.element.logicalInput.value = v;
+    }
+
+    void UpdateOutput(bool v)
+    {
+        logicalOutput.value = v;
     }
 }

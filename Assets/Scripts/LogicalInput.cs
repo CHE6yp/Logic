@@ -7,41 +7,38 @@ using UnityEngine;
 [Serializable]
 public class LogicalInput : LogicalIO
 {
-    public LogicalOutput source;
-    
-    void Update()
-    {
-        value = (source != null) ? source.value : false;
-    }
-
-    /*
+    public LogicalOutput _source;
     public LogicalOutput source
     {
+        set
+        {
+            if (_source != value)
+            {
+                if (_source!=null)
+                {
+                    _source.valueChanged -= UpdateValue;
+                }
+                _source = value;
+                if (_source != null)
+                {
+                    _source.valueChanged += UpdateValue;
+                }
+                UpdateValue();
+            }
+        }
         get
         {
             return _source;
         }
-        set
-        {
-            if (_source != null) _source.valueChanged -= UpdateOutput;
-            _source = value;
-            if (_source != null) _source.valueChanged += UpdateOutput;
-            UpdateOutput(true);
-
-        }
     }
 
-    private void Awake()
+    void UpdateValue()
     {
-        if (_source!=null)
-            _source.valueChanged += UpdateOutput;
-        UpdateOutput(true);
+        value = (source != null) ? source.value : false;
     }
 
-
-    public void UpdateOutput(bool v)
+    void UpdateValue(bool v)
     {
-        value = (_source != null) ? _source.value : false;
-    } 
-     */
+        value = v;
+    }
 }

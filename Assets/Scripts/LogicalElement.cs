@@ -5,7 +5,26 @@ using UnityEngine;
 public class LogicalElement : MonoBehaviour, IOneOutput
 {
     //public IOneOutput inputElement;
-    public GameObject inputElement; //bad
+    public GameObject _inputElement; //bad
+    public GameObject inputElement
+    {
+        set
+        {
+            if (_inputElement != value)
+            {
+                _inputElement = value;
+
+                SetNewInputElement();
+                //ModuleChanged(value);
+                //moduleValueChanged?.Invoke(value);
+            }
+        }
+        get
+        {
+            return _inputElement;
+        }
+    }
+
     public LogicalInput logicalInput;
     public LogicalOutput _logicalOutput;
     public LogicalOutput logicalOutput {
@@ -15,16 +34,14 @@ public class LogicalElement : MonoBehaviour, IOneOutput
 
     protected virtual void Awake()
     {
-        if (inputElement!=null)
-            //logicalInput.source = inputElement.logicalOutput;
-            logicalInput.source = (inputElement.GetComponent(typeof(IOneOutput)) as IOneOutput).logicalOutput; //veryBad, but can't expose interface field in inspector otherwise
+        SetNewInputElement();
     }
 
-
-    //TODO избавиться от апдейта
-    protected virtual void Update()
+    void SetNewInputElement()
     {
-        logicalInput.value = (logicalInput.source != null) ? logicalInput.source.value : false;
+        if (inputElement != null)
+        {
+            logicalInput.source = (inputElement.GetComponent(typeof(IOneOutput)) as IOneOutput).logicalOutput; //veryBad, but can't expose interface field in inspector otherwise
+        }
     }
-
 }
