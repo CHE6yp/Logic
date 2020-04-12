@@ -20,6 +20,6 @@ public class LogicalIO : MonoBehaviour
             return _value;
         }
     }
-    public delegate void LogicalEvent(bool v);
+    public delegate void LogicalEvent(bool v); //возможно нет смысла передавать значение, его можно брать из элемента
     public event LogicalEvent valueChanged;
 }
