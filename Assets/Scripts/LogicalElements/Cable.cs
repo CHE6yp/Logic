@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Cable : LogicalElement
 {
-    public MeshRenderer meshRenderer;
+    MeshRenderer meshRenderer;
 
     public Material[] mats;
 
     protected override void Awake()
     {
         base.Awake();
-        meshRenderer = GetComponent<MeshRenderer>();
+        meshRenderer = GetComponentInChildren<MeshRenderer>();
         logicalInput.valueChanged += Switch;
         Switch(logicalInput.value);
     }

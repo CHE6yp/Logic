@@ -2,17 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(LogicalInput))]
-[RequireComponent(typeof(LogicalOutput))]
-public class LogicalElement : MonoBehaviour
+public class LogicalElement : MonoBehaviour, IOneOutput
 {
+    //public IOneOutput inputElement;
+    public GameObject inputElement; //bad
     public LogicalInput logicalInput;
-    public LogicalOutput logicalOutput;
+    public LogicalOutput _logicalOutput;
+    public LogicalOutput logicalOutput {
+        get { return _logicalOutput; }
+        set { _logicalOutput = value; }
+    }
 
     protected virtual void Awake()
     {
-        logicalInput = GetComponent<LogicalInput>();
-        logicalOutput = GetComponent<LogicalOutput>();
+        if (inputElement!=null)
+            //logicalInput.source = inputElement.logicalOutput;
+            logicalInput.source = (inputElement.GetComponent(typeof(IOneOutput)) as IOneOutput).logicalOutput; //veryBad, but can't expose interface field in inspector otherwise
+    }
+
+
+    //TODO избавиться от апдейта
+    protected virtual void Update()
+    {
+        logicalInput.value = (logicalInput.source != null) ? logicalInput.source.value : false;
     }
 
 }

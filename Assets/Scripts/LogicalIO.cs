@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LogicalIO : MonoBehaviour
+[Serializable]
+public class LogicalIO
 {
     public bool _value = false;
     public bool value

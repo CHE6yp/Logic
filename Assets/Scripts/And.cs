@@ -3,24 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-[RequireComponent(typeof(LogicalInput))]
-[RequireComponent(typeof(LogicalOutput))]
-public class And : MonoBehaviour
+public class And : TwoInputs
 {
-    public List<LogicalInput> logicalInputs;
-    public LogicalOutput logicalOutput;
-
-
-    // Update is called once per frame
-    void Update()
+    public override bool Strategy()
     {
-        if (!logicalInputs.Any(a => !a.value))
-        {
-            logicalOutput.value = true;
-        }
-        else
-        {
-            logicalOutput.value = false;
-        }
+        return logicalInput1.value && logicalInput2.value;
     }
 }
