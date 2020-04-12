@@ -291,7 +291,6 @@ GameObject:
   - component: {fileID: 3886283510494248958}
   - component: {fileID: 3886283510494248959}
   - component: {fileID: 3886283510494248956}
-  - component: {fileID: 3886283510494248946}
   - component: {fileID: 3886283510494248947}
   - component: {fileID: 7937938712050840227}
   - component: {fileID: 3185910595933652881}
@@ -366,19 +365,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &3886283510494248946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3886283510494248944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b395c16030cd7142a07e79bca276d77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _value: 0
 --- !u!114 &3886283510494248947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,8 +377,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a4efd28126072f4699cd7eeb9b45ce6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  logicalInput: {fileID: 0}
-  logicalOutput: {fileID: 3886283510494248946}
+  logicalInput:
+    _value: 0
+    source:
+      _value: 0
+  logicalOutput:
+    _value: 0
 --- !u!54 &7937938712050840227
 Rigidbody:
   m_ObjectHideFlags: 0

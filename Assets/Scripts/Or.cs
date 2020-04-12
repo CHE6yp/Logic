@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-[RequireComponent(typeof(LogicalInput))]
-[RequireComponent(typeof(LogicalOutput))]
 public class Or : MonoBehaviour
 {
     public List<LogicalInput> logicalInputs;

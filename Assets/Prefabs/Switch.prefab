@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 6519410682538719704}
   - component: {fileID: 6519410682538719707}
   - component: {fileID: 6519410682538719706}
-  - component: {fileID: 6519410682538719717}
-  - component: {fileID: 6519410682538719716}
   - component: {fileID: 6519410682538719719}
   - component: {fileID: 1246573720788186830}
   - component: {fileID: 4406168399026585922}
@@ -100,33 +98,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6519410682538719717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6519410682538719718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b39f2bd391c27ae46b92fb8df684346a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _value: 0
-  source: {fileID: 0}
---- !u!114 &6519410682538719716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6519410682538719718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b395c16030cd7142a07e79bca276d77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _value: 0
 --- !u!114 &6519410682538719719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,8 +110,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17911332972254c43a9b1d877cca35ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  logicalInput: {fileID: 6519410682538719717}
-  logicalOutput: {fileID: 6519410682538719716}
+  logicalInput:
+    _value: 0
+    source:
+      _value: 0
+  logicalOutput:
+    _value: 0
   value: 0
   audioClips:
   - {fileID: 8300000, guid: aae11ec6c8a7b6a4a9d8a25d92428e3f, type: 3}

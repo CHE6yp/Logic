@@ -22,16 +22,21 @@ public class ModuleHandler : LogicalElement
             return _module;
         }
     }
+    public bool detachable = false;
     public delegate void ModuleHandlerEvent(Module m);
     public ModuleHandlerEvent moduleValueChanged;
+
+    [HideInInspector]
     public Transform place;
-    public bool detachable = false;
-    public GameObject straps;
-    public ParticleSystem flare;
+    GameObject straps;
+    ParticleSystem flare;
 
     protected override void Awake()
     {
         base.Awake();
+        place = transform.Find("Place");
+        straps = transform.Find("Visual").Find("Straps").gameObject;
+        flare = transform.Find("Visual").Find("Flare").GetComponent<ParticleSystem>();
         straps.SetActive(!detachable);
         
     }
@@ -41,14 +46,16 @@ public class ModuleHandler : LogicalElement
         FlareToggle();
     }
 
-    void Update()
+    //TODO избавиться от апдейта
+    protected override void Update()
     {
+        
         if (Attached())
         {
-            if (logicalInput && module.element.logicalInput)
+            if (logicalInput!=null && module.element.logicalInput != null)
                 module.element.logicalInput.value = logicalInput.value;
 
-            if (logicalOutput && module.element.logicalOutput)
+            if (logicalOutput != null && module.element.logicalOutput != null)
                 logicalOutput.value = module.element.logicalOutput.value;
         }
         else
@@ -56,6 +63,7 @@ public class ModuleHandler : LogicalElement
             logicalOutput.value = false;
             
         }
+        base.Update();
     }
 
     public void ModuleChanged(Module m)
@@ -69,7 +77,7 @@ public class ModuleHandler : LogicalElement
         {
             flare.Stop();
         }
-        else if (logicalInput && logicalInput.value)
+        else if (logicalInput != null && logicalInput.value != null)
         {
             flare.Play();
         }

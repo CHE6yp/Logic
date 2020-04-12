@@ -46,6 +46,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -104,9 +105,6 @@ GameObject:
   - component: {fileID: 1467735026393426452}
   - component: {fileID: 1467735026393426453}
   - component: {fileID: 1467735026393426442}
-  - component: {fileID: 1467735026393426443}
-  - component: {fileID: 1467735026393426440}
-  - component: {fileID: 1467735026393426441}
   - component: {fileID: 1467735026393426446}
   m_Layer: 0
   m_Name: And
@@ -152,6 +150,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -189,47 +188,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1467735026393426443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1467735026393426444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b39f2bd391c27ae46b92fb8df684346a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _value: 0
-  source: {fileID: 0}
---- !u!114 &1467735026393426440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1467735026393426444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b39f2bd391c27ae46b92fb8df684346a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _value: 0
-  source: {fileID: 0}
---- !u!114 &1467735026393426441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1467735026393426444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b395c16030cd7142a07e79bca276d77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  value: 0
 --- !u!114 &1467735026393426446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,6 +201,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logicalInputs:
-  - {fileID: 1467735026393426440}
-  - {fileID: 1467735026393426443}
-  logicalOutput: {fileID: 1467735026393426441}
+  - _value: 0
+    source:
+      _value: 0
+  - _value: 0
+    source:
+      _value: 0
+  logicalOutput:
+    _value: 0

@@ -55,6 +55,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -101,7 +102,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3423182513582923371}
-  - component: {fileID: 3423182513582923369}
   - component: {fileID: 3423182513582923368}
   - component: {fileID: 4304456440396780260}
   - component: {fileID: 8605832862347501781}
@@ -127,20 +127,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3423182513582923369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3423182513582923370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b39f2bd391c27ae46b92fb8df684346a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  value: 0
-  sources: []
 --- !u!114 &3423182513582923368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,9 +139,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d9873e344ffafd4e863fdc6f02dfc25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  logicalInput: {fileID: 3423182513582923369}
-  animator: {fileID: 4304456440396780260}
-  audioSource: {fileID: 8605832862347501781}
+  logicalInput:
+    _value: 0
+    source:
+      _value: 0
+  logicalOutput:
+    _value: 0
 --- !u!95 &4304456440396780260
 Animator:
   serializedVersion: 3

@@ -232,12 +232,10 @@ GameObject:
   - component: {fileID: 7423057172400216425}
   - component: {fileID: 7423057172400216426}
   - component: {fileID: 7423057172400216427}
-  - component: {fileID: 7423057172400216405}
   - component: {fileID: 7423057172400216406}
   - component: {fileID: 7423057172400216407}
   - component: {fileID: 939029710136594454}
   - component: {fileID: 618629130322252822}
-  - component: {fileID: 3173751888067297451}
   m_Layer: 0
   m_Name: Lamp
   m_TagString: Untagged
@@ -320,20 +318,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7423057172400216405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7423057172400216428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b39f2bd391c27ae46b92fb8df684346a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _value: 0
-  source: {fileID: 0}
 --- !u!108 &7423057172400216406
 Light:
   m_ObjectHideFlags: 0
@@ -407,8 +391,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40f43b6547db171429cd22efcf2b0ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  logicalInput: {fileID: 7423057172400216405}
-  logicalOutput: {fileID: 0}
+  logicalInput:
+    _value: 0
+    source:
+      _value: 0
+  logicalOutput:
+    _value: 0
   light: {fileID: 7423057172400216406}
 --- !u!54 &939029710136594454
 Rigidbody:
@@ -441,16 +429,3 @@ MonoBehaviour:
   element: {fileID: 7423057172400216407}
   handler: {fileID: 0}
   attached: 0
---- !u!114 &3173751888067297451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7423057172400216428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b395c16030cd7142a07e79bca276d77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _value: 0
