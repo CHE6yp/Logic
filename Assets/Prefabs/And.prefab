@@ -200,12 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29033957b4c762b418e74220c64d40bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  logicalInputs:
-  - _value: 0
-    source:
-      _value: 0
-  - _value: 0
-    source:
-      _value: 0
-  logicalOutput:
+  inputElements: []
+  logicalInputs: []
+  _logicalOutput:
     _value: 0
