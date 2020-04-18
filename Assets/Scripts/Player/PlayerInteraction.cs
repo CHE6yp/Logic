@@ -45,8 +45,18 @@ public class PlayerInteraction : MonoBehaviour
                 {
                     if (hit.collider.gameObject.GetComponent<ModuleHandler>())
                     {
-                        module.Place(hit.collider.GetComponent<ModuleHandler>());
-                        module = null;
+                        if (hit.collider.gameObject.GetComponent<ModuleHandler>().module == null)
+                        {
+                            module.Place(hit.collider.GetComponent<ModuleHandler>());
+                            module = null;
+                        }
+                        else
+                        {
+                            Module moduleTemp = module;
+                            module = hit.collider.gameObject.GetComponent<ModuleHandler>().module;
+                            hit.collider.gameObject.GetComponent<ModuleHandler>().module.PickUp(transform);
+                            moduleTemp.Place(hit.collider.GetComponent<ModuleHandler>());
+                        }
                     }
                     else
                     {
