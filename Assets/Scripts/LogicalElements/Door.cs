@@ -19,9 +19,7 @@ public class Door : LogicalElement
 
     public void Switch(bool value)
     {
-        Debug.Log("Changed to " + value);
-        string trigger = (value) ? "open" : "close";
-        animator.SetTrigger(trigger);
+        animator.SetBool("value", value);
         audioSource.Play();
     }
 }
