@@ -39,12 +39,12 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2370146267473377781}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.1273585, g: 1, b: 0.5434593, a: 1}
-  m_Intensity: 4
+  m_Intensity: 3.9788735
   m_Range: 4
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
