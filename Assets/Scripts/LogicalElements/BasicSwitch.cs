@@ -36,7 +36,8 @@ public class BasicSwitch : LogicalElement
 
     void UpdateLook()
     {
-        GetComponent<MeshRenderer>().material.color = (value) ? Color.green : Color.red;
+        //GetComponent<MeshRenderer>().material.color = (value) ? Color.green : Color.red;
+        GetComponent<Animator>().SetBool("value", value);
     }
 
     void UpdateOutput()
