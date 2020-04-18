@@ -48,11 +48,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4732a6750d114444bb22b000dbe8574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputElement: {fileID: 0}
   logicalInput:
     _value: 0
-    source:
+    _source:
       _value: 0
-  logicalOutput:
+  _logicalOutput:
     _value: 0
 --- !u!54 &6481130031496026460
 Rigidbody:
@@ -147,7 +148,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
