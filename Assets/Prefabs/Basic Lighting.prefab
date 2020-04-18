@@ -208,6 +208,11 @@ PrefabInstance:
       propertyPath: _inputElement
       value: 
       objectReference: {fileID: 1918977133687785513}
+    - target: {fileID: 3788439991742433565, guid: ae62645069209df4fbd695b12f06c1d5,
+        type: 3}
+      propertyPath: detachable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4650417532058973666, guid: ae62645069209df4fbd695b12f06c1d5,
         type: 3}
       propertyPath: source
